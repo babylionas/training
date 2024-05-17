@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "test-training": {
+    "myproject": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/test-training",
+            "outputPath": "dist/myproject",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -22,8 +22,13 @@
             "tsConfig": "tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              {"glob": "**/*",
+              "input": "./node_modules/dwt/dist",
+              "output": "assets/dwt-resources"}
             ],
+
+
             "styles": [
               "src/styles.css"
             ],
@@ -57,10 +62,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "test-training:build:production"
+              "buildTarget": "myproject:build:production"
             },
             "development": {
-              "buildTarget": "test-training:build:development"
+              "buildTarget": "myproject:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -68,7 +73,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "test-training:build"
+            "buildTarget": "myproject:build"
           }
         },
         "test": {
@@ -91,5 +96,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "86280b1f-4006-4061-b1b3-c790472f036f"
   }
 }
